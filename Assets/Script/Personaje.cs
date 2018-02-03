@@ -15,6 +15,9 @@ public class Personaje : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        personaje.transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
+        if (Time.timeScale != 0)
+        {
+            personaje.transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
+        }
 	}
 }
