@@ -13,6 +13,6 @@ public class DataSender : MonoBehaviour {
 	void Update ()
     {
         Shader.SetGlobalVector("paintPosition", this.transform.position);
-        Debug.Log(Shader.GetGlobalVector("paintPosition"));
+        //Debug.Log(Shader.GetGlobalVector("paintPosition"));
 	}
 }
