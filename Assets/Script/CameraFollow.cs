@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject cameraObj;
-    public Vector3 specificVector ;
+    public Vector3 specificVector;
     public float smoothSpeed;
  
     public void Start()
