@@ -26,7 +26,6 @@ public class PauseManager : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(Time.timeScale);
         if (isPaused)
         {
             Time.timeScale = 0;
