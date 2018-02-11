@@ -1,16 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour {
+public class ObstacleSpawner : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField]
+    private GameObject[] obstacles;
+
+    public float timer;
+
+    public float minTime;
+
+    public float maxTime;
+
+    // Use this for initialization
+    void Start ()
+    {
+        timer = Random.Range(minTime, maxTime);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            InvocarObstaculo();
+        }
 	}
+
+    private void InvocarObstaculo()
+    {
+        var index = Random.Range(0, 3);
+        Instantiate(obstacles[index], this.transform.position, Quaternion.identity);
+        timer = Random.Range(minTime, maxTime);
+    }
 }

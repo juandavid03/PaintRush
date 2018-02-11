@@ -53,7 +53,6 @@ Shader "PaintRush/PaintOnPosition"
 				fixed4 col = tex2D(_MainTex, i.uv);
 				i.position = UnityObjectToClipPos(i.vertex).xyz;
 
-
 				if (i.position.x > paintPosition.x)
 				return col * _Color;
 				else if (i.position.x < paintPosition.x)

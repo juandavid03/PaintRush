@@ -6,7 +6,7 @@ using UnityEngine;
 public class Personaje : MonoBehaviour
 {
 
-    private GameObject personaje;
+    //private GameObject personaje;
 
     private Rigidbody2D rbody;
 
@@ -15,7 +15,7 @@ public class Personaje : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        personaje = GameObject.Find("Personaje");
+        //personaje = GameObject.Find("Personaje");
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
     }
 	

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DataSender : MonoBehaviour {
 
@@ -13,6 +11,5 @@ public class DataSender : MonoBehaviour {
 	void Update ()
     {
         Shader.SetGlobalVector("paintPosition", this.transform.position);
-        //Debug.Log(Shader.GetGlobalVector("paintPosition"));
 	}
 }
