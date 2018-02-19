@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstaculo : MonoBehaviour
 {
 
-	// Use this for initialization
-	void Start ()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+            Debug.Log("Choque con: " + collision.name);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Personaje.Instance.RecieveDamage();
+            }
+       
+    }
+
 }
