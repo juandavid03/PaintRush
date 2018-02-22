@@ -36,6 +36,9 @@ public class Personaje : MonoBehaviour
     [SerializeField]
     private float timeHealth = 5;
 
+    private int layerMask = 8;
+
+
     public int Health
     {
         get
@@ -53,6 +56,8 @@ public class Personaje : MonoBehaviour
     {
         //personaje = GameObject.Find("Personaje");
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
+
+       
     }
 	
 	// Update is called once per frame
@@ -74,6 +79,27 @@ public class Personaje : MonoBehaviour
                     health++;
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.LogError("Hundí 1");
+                LanzarRayo(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.LogError("Hundí 2");
+                LanzarRayo(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Debug.LogError("Hundí 3");
+                LanzarRayo(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Debug.LogError("Hundí 4");
+                LanzarRayo(4);
+            }
         }
 	}
 
@@ -82,9 +108,65 @@ public class Personaje : MonoBehaviour
         Health = Health - 1;    
     }
 
-    public void LanzarRayo()
+    public void LanzarRayo(int index)
     {
-
+        Debug.LogWarning("RAYO #" + index);
+        switch (index)
+        {
+            case 1:
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    if (hit)
+                    {
+                        
+                        Debug.LogWarning("El rayo le pego a: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.tag == "ObstacleCircle")
+                        {
+                            Debug.Log("Desactive el circulito");
+                        }
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    if (hit)
+                    {
+                        Debug.LogWarning("El rayo le pego a: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.tag == "ObstaclePolygon")
+                        {
+                            Debug.Log("Desactive el poligono");
+                        }
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    if (hit)
+                    {
+                        Debug.LogWarning("El rayo le pego a: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.tag == "ObstacleSquare")
+                        {
+                            Debug.Log("Desactive el square");
+                        }
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    if (hit)
+                    {
+                        Debug.LogWarning("El rayo le pego a: " + hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.tag == "ObstacleTriangle")
+                        {
+                            Debug.Log("Desactive el triangle");
+                        }
+                    }
+                    break;
+                }
+        }
     }
 
 }
