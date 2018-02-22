@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61282788862329734}
   - component: {fileID: 50418701259450944}
   - component: {fileID: 114445536259758948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: obstCircle
   m_TagString: ObstacleCircle
   m_Icon: {fileID: 0}

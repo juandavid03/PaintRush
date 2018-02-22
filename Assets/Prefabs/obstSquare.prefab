@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61954705787445324}
   - component: {fileID: 50948945590641512}
   - component: {fileID: 114715791671716634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: obstSquare
   m_TagString: ObstacleSquare
   m_Icon: {fileID: 0}

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61827322083479946}
   - component: {fileID: 50010490786192812}
   - component: {fileID: 114881610668067440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: obstTriangle
   m_TagString: ObstacleTriangle
   m_Icon: {fileID: 0}

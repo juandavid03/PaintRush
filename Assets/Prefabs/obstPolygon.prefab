@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61946999328837650}
   - component: {fileID: 50798033225599176}
   - component: {fileID: 114516266636733750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: obstPolygon
   m_TagString: ObstaclePolygon
   m_Icon: {fileID: 0}

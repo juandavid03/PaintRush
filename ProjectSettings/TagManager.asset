@@ -8,6 +8,7 @@ TagManager:
   - ObstacleSquare
   - ObstacleTriangle
   - ObstaclePolygon
+  - TestCollider
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Obstaculo
+  - TestLayer9
   - 
   - 
   - 
