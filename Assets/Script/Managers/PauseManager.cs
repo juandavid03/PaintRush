@@ -28,12 +28,14 @@ public class PauseManager : MonoBehaviour
     {
         if (isPaused)
         {
+            Personaje.Instance.IsPaused = true;
             Time.timeScale = 0;
             canvasPausa.SetActive(true);
             canvasUI.SetActive(false);
         }
         else if (!isPaused)
         {
+            Personaje.Instance.isPaused = false;
             Time.timeScale = 1;
             canvasPausa.SetActive(false);
             canvasUI.SetActive(true);

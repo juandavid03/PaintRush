@@ -13,7 +13,10 @@ EditorBuildSettings:
     guid: a3c20374dbcfceb4596460b5ccf3f23b
   - enabled: 1
     path: Assets/_Scenes/Tienda.unity
-    guid: 8733965e959558344a189b5a500ae3f9
+    guid: 80b153a3d04f53844a217fb328034d4a
   - enabled: 1
     path: Assets/_Scenes/Tutorial.unity
     guid: 05dd04681be91484480051b4a2e4c47a
+  - enabled: 1
+    path: Assets/_Scenes/EndgameInfoScreen.unity
+    guid: cf195dcf401ac294d9124881bf5fd8e0

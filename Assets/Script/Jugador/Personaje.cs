@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Personaje : MonoBehaviour
@@ -31,14 +32,30 @@ public class Personaje : MonoBehaviour
     public float force;
 
     [SerializeField]
-    private int health = 3;
+    private int health = 1;
 
     [SerializeField]
     private float timeHealth = 5;
 
     private int layerMask = 8;
     private int layerMaskTest = 9;
+    private float points = 0;
 
+    public bool isPaused = false;
+
+    public Text textPoints;
+
+    public float Points
+    {
+        get
+        {
+            return points;
+        }
+        set
+        {
+            points = value;
+        }
+    }
 
     public int Health
     {
@@ -52,12 +69,23 @@ public class Personaje : MonoBehaviour
         }
     }
 
+    public bool IsPaused
+    {
+        get
+        {
+            return isPaused;
+        }
+        set
+        {
+            isPaused = value;
+        }
+    }
     // Use this for initialization
     void Start ()
     {
         //personaje = GameObject.Find("Personaje");
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
-
+        textPoints = GameObject.Find("textPoints").GetComponent<Text>();
        
     }
 	
@@ -65,13 +93,13 @@ public class Personaje : MonoBehaviour
 	void Update ()
     {
         //Todas las funcionalidades del update, van dentro de este if, para qu funcione cuando no estan pausadas.
-        if (Time.timeScale != 0)
+        if (!isPaused)
         {
             timeHealth -= Time.deltaTime;
             var vel = new Vector2(1, rbody.velocity.y);
             rbody.velocity = vel.normalized * force;
-            //Debug.Log(rbody.velocity);
-            //Debug.Log("Health: " + Health);
+            ActualizarPuntaje();
+            Debug.Log("Health: " + Health);
             if (timeHealth < 0)
             {
                 timeHealth = 10;
@@ -83,24 +111,28 @@ public class Personaje : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-              
+
                 LanzarRayo("circle");
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                
+
                 LanzarRayo("polygon");
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                
+
                 LanzarRayo("square");
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-               
+
                 LanzarRayo("triangle");
             }
+        }
+        else if (isPaused)
+        {
+            rbody.velocity = Vector2.zero;
         }
 	}
 
@@ -172,5 +204,15 @@ public class Personaje : MonoBehaviour
                 }
         }
     }
-    
+
+    public void ActualizarPuntaje()
+    {
+        if (Health == 3)
+            Points += 3;
+        if (Health == 2)
+            Points += 2;
+        if (Health == 1)
+            Points += 1 ;
+        textPoints.text = "Puntos: " + Points.ToString();
+    }
 }

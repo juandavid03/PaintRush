@@ -2,16 +2,18 @@
 
 public class Obstaculo : MonoBehaviour
 {
+    [SerializeField]
     private bool isActive = true;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("Choque con: " + collision.name);
+            
             if (collision.gameObject.CompareTag("Player"))
             {
                 if (isActive)
                 {
-                    Personaje.Instance.RecieveDamage();
-                    this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    Debug.Log("Choque con: " + collision.name);
+                    Personaje.Instance.RecieveDamage();   
                 }
             }
        
@@ -21,6 +23,12 @@ public class Obstaculo : MonoBehaviour
     {
         get { return isActive; }
         set { isActive = value; }
+    }
+
+    private void Update()
+    {
+        if (!IsActive)
+        this.gameObject.GetComponent<Renderer>().material.color = Color.red;
     }
 
 }
