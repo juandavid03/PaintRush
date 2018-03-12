@@ -83,7 +83,7 @@ public class Personaje : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //personaje = GameObject.Find("Personaje");
+        
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
         textPoints = GameObject.Find("textPoints").GetComponent<Text>();
        
