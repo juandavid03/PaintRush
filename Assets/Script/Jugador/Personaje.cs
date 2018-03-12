@@ -40,7 +40,8 @@ public class Personaje : MonoBehaviour
     private int layerMask = 8;
     private int layerMaskTest = 9;
     private float points = 0;
-
+    private int invincibilidadDisponibles;
+    private int tiempoLentoDisponibles;
     public bool isPaused = false;
 
     public Text textPoints;
@@ -86,7 +87,11 @@ public class Personaje : MonoBehaviour
         
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
         textPoints = GameObject.Find("textPoints").GetComponent<Text>();
-       
+        invincibilidadDisponibles = PlayerPrefs.GetInt("TiempoLento");
+        tiempoLentoDisponibles = PlayerPrefs.GetInt("Invincibilidad");
+        Debug.Log("Invincibilidad: " + invincibilidadDisponibles);
+        Debug.Log("Tiempo Lento: " + tiempoLentoDisponibles);
+
     }
 	
 	// Update is called once per frame

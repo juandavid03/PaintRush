@@ -6,7 +6,7 @@ public class StoreManager : MonoBehaviour
 
     public Text textPuntosDisponibles;
     public Text testText;
-    private float testPoints = 5;
+    private float testPoints = 50000;
 	// Use this for initialization
 	void Start ()
     {
@@ -34,10 +34,13 @@ public class StoreManager : MonoBehaviour
     public void Comprar(Upgrade upgrade)
     {
         var currentAvailablePoints = PlayerPrefs.GetFloat("AvailablePoints");
+        
         if (currentAvailablePoints > upgrade.Cost)
         {
+            var currentUpgradeQuantity = PlayerPrefs.GetInt(upgrade.UpgradeName);
             testText.text = upgrade.UpgradeName;
             PlayerPrefs.SetFloat("AvailablePoints", currentAvailablePoints - upgrade.Cost);
+            PlayerPrefs.SetInt(upgrade.UpgradeName, currentUpgradeQuantity + 1);
         }
         else
         {
