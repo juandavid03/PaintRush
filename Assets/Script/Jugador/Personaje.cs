@@ -181,7 +181,7 @@ public class Personaje : MonoBehaviour
                 }
             case "square":
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity);
                     if (hit)
                     {
                   
@@ -195,7 +195,7 @@ public class Personaje : MonoBehaviour
                 }
             case "triangle":
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity, layerMask);
+                    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, Mathf.Infinity);
                     if (hit)
                     {
                      

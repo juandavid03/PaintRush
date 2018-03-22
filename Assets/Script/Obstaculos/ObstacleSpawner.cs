@@ -30,7 +30,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void InvocarObstaculo()
     {
-        var index = Random.Range(0, 3);
+        var index = Random.Range(0, 4);
         Instantiate(obstacles[index], this.transform.position, Quaternion.identity);
         timer = Random.Range(minTime, maxTime);
     }
