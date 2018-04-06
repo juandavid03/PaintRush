@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -43,6 +45,8 @@ public class Personaje : MonoBehaviour
     private int invincibilidadDisponibles;
     private int tiempoLentoDisponibles;
     public bool isPaused = false;
+
+    public bool isInvincible = false;
 
     public Text textPoints;
 
@@ -134,12 +138,36 @@ public class Personaje : MonoBehaviour
 
                 LanzarRayo("triangle");
             }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                force = force / 2;
+                StartCoroutine(apagarTiempoLentoCR());
+                Debug.LogWarning("Active Tiempo Lento");
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                isInvincible = true;
+                StartCoroutine(apagarInvincibilidad());
+                Debug.LogWarning("Active Invincibilidad");
+            }
         }
         else if (isPaused)
         {
             rbody.velocity = Vector2.zero;
         }
 	}
+
+    private IEnumerator apagarInvincibilidad()
+    {
+        yield return new WaitForSeconds(5);
+        isInvincible = false;
+    }
+
+    private IEnumerator apagarTiempoLentoCR()
+    {
+        yield return new WaitForSeconds(3);
+        force = force * 2;
+    }
 
     public void RecieveDamage()
     {
@@ -219,5 +247,10 @@ public class Personaje : MonoBehaviour
         if (Health == 1)
             Points += 1 ;
         textPoints.text = "Puntos: " + Points.ToString();
+    }
+
+    public void ActivarUpgrade(Upgrade upgrade)
+    {
+      
     }
 }
