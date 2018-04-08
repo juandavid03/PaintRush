@@ -12,6 +12,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     public float maxTime;
 
+    private int maxObstacles = 4;
+
     // Use this for initialization
     void Start ()
     {
@@ -30,7 +32,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void InvocarObstaculo()
     {
-        var index = Random.Range(0, 4);
+        var index = Random.Range(0, maxObstacles);
         Instantiate(obstacles[index], this.transform.position, Quaternion.identity);
         timer = Random.Range(minTime, maxTime);
     }

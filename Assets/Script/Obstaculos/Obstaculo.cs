@@ -17,18 +17,16 @@ public class Obstaculo : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-            
-            if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Personaje>().isInvincible == false)
+    {     
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.GetComponent<Personaje>().isInvincible == false)
+        {
+            if (isActive)
             {
-                if (isActive)
-                {
-                    Debug.Log("Choque con: " + collision.name);
-                    Personaje.Instance.RecieveDamage();
-                    source.PlayOneShot(hitClip);
-                }
+                Debug.Log("Choque con: " + collision.name);
+                Personaje.Instance.RecieveDamage();
+                source.PlayOneShot(hitClip);
             }
-       
+        }
     }
 
     public bool IsActive
