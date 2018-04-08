@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-       //source = GameObject.Find("EffectSource").GetComponent<AudioSource>();
+       source = GameObject.Find("EffectSource").GetComponent<AudioSource>();
     }
 
     public void LoadScene(string nextScene)

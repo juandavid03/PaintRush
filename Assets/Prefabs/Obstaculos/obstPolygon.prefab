@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  hitClip: {fileID: 8300000, guid: 953230cf3cd264640a9966d47520196c, type: 3}
+  source: {fileID: 0}
 --- !u!212 &212779613639868090
 SpriteRenderer:
   m_ObjectHideFlags: 1

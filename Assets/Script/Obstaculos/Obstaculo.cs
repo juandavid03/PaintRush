@@ -5,6 +5,17 @@ public class Obstaculo : MonoBehaviour
     [SerializeField]
     private bool isActive = true;
 
+    public AudioClip hitClip;
+
+    [SerializeField]
+    private AudioSource source;
+
+
+    private void Start()
+    {
+        source = GameObject.Find("EffectSource").GetComponent<AudioSource>(); 
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
             
@@ -13,7 +24,8 @@ public class Obstaculo : MonoBehaviour
                 if (isActive)
                 {
                     Debug.Log("Choque con: " + collision.name);
-                    Personaje.Instance.RecieveDamage();   
+                    Personaje.Instance.RecieveDamage();
+                    source.PlayOneShot(hitClip);
                 }
             }
        
