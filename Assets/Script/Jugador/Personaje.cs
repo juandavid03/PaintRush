@@ -27,7 +27,6 @@ public class Personaje : MonoBehaviour
 
         instance = this;
     }
-    //private GameObject personaje;
 
     private Rigidbody2D rbody;
 
@@ -174,6 +173,7 @@ public class Personaje : MonoBehaviour
         Health = Health - 1;    
     }
 
+    //Mecanica para evitar obstaculos.
     public void LanzarRayo(string forma)
     {
         Debug.LogWarning("Forma: " + forma);
@@ -248,6 +248,7 @@ public class Personaje : MonoBehaviour
             Points += 1 ;
         textPoints.text = "Puntos: " + Points.ToString();
     }
+
 
     public void ActivarUpgrade(Upgrade upgrade)
     {

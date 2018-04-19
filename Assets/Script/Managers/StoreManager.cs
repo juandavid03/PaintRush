@@ -6,6 +6,8 @@ public class StoreManager : MonoBehaviour
 
     public Text textPuntosDisponibles;
     public Text testText;
+
+    //Variable "Hard codeada" porque es de testeo, no influye dentro del juego final.
     private float testPoints = 50000;
 	// Use this for initialization
 	void Start ()

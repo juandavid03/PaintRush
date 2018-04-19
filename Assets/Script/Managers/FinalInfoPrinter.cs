@@ -6,6 +6,8 @@ public class FinalInfoPrinter : MonoBehaviour
     private Text finalPointsText;
      private Text availablePointsText;
     // Use this for initialization
+
+    //Finalizar el nivel e imprimir la info.
     void Start ()
     {
         finalPointsText = GameObject.Find("textFinalPoints").GetComponent<Text>();
