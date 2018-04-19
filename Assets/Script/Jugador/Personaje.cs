@@ -250,8 +250,4 @@ public class Personaje : MonoBehaviour
     }
 
 
-    public void ActivarUpgrade(Upgrade upgrade)
-    {
-      
-    }
 }
