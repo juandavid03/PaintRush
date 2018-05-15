@@ -35,7 +35,7 @@ public class Personaje : MonoBehaviour
     public float acceleration = 0.1f;
 
     [SerializeField]
-    private int health = 1;
+    private int health = 3;
 
     [SerializeField]
     private float timeHealth = 5;
