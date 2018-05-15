@@ -32,6 +32,8 @@ public class Personaje : MonoBehaviour
 
     public float force;
 
+    public float acceleration = 0.1f;
+
     [SerializeField]
     private int health = 1;
 
@@ -87,13 +89,14 @@ public class Personaje : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
+        var vel = new Vector2(1, rbody.velocity.y);
+        rbody.velocity = (vel.normalized * force);
         textPoints = GameObject.Find("textPoints").GetComponent<Text>();
         invincibilidadDisponibles = PlayerPrefs.GetInt("TiempoLento");
         tiempoLentoDisponibles = PlayerPrefs.GetInt("Invincibilidad");
-        Debug.Log("Invincibilidad: " + invincibilidadDisponibles);
-        Debug.Log("Tiempo Lento: " + tiempoLentoDisponibles);
+        //Debug.Log("Invincibilidad: " + invincibilidadDisponibles);
+        //Debug.Log("Tiempo Lento: " + tiempoLentoDisponibles);
 
     }
 	
@@ -104,10 +107,9 @@ public class Personaje : MonoBehaviour
         if (!isPaused)
         {
             timeHealth -= Time.deltaTime;
-            var vel = new Vector2(1, rbody.velocity.y);
-            rbody.velocity = vel.normalized * force;
+            Correr();
             ActualizarPuntaje();
-            Debug.Log("Health: " + Health);
+            //Debug.Log("Health: " + Health);
             if (timeHealth < 0)
             {
                 timeHealth = 10;
@@ -141,13 +143,13 @@ public class Personaje : MonoBehaviour
             {
                 force = force / 2;
                 StartCoroutine(apagarTiempoLentoCR());
-                Debug.LogWarning("Active Tiempo Lento");
+                //Debug.LogWarning("Active Tiempo Lento");
             }
             if (Input.GetKeyDown(KeyCode.O))
             {
                 isInvincible = true;
                 StartCoroutine(apagarInvincibilidad());
-                Debug.LogWarning("Active Invincibilidad");
+                //Debug.LogWarning("Active Invincibilidad");
             }
         }
         else if (isPaused)
@@ -155,6 +157,12 @@ public class Personaje : MonoBehaviour
             rbody.velocity = Vector2.zero;
         }
 	}
+
+    private void Correr()
+    {
+        rbody.velocity += new Vector2(acceleration, 0);
+        Debug.Log(rbody.velocity);
+    }
 
     private IEnumerator apagarInvincibilidad()
     {
@@ -176,7 +184,7 @@ public class Personaje : MonoBehaviour
     //Mecanica para evitar obstaculos.
     public void LanzarRayo(string forma)
     {
-        Debug.LogWarning("Forma: " + forma);
+        //Debug.LogWarning("Forma: " + forma);
         switch (forma)
         {
             
@@ -188,7 +196,7 @@ public class Personaje : MonoBehaviour
                         
                         if (hit.collider.gameObject.CompareTag("ObstacleCircle"))
                         {
-                            Debug.Log("Desactive el circulito");
+                            //Debug.Log("Desactive el circulito");
                             hit.collider.gameObject.GetComponent<Obstaculo>().IsActive = false;
                         }
                     }
@@ -201,7 +209,7 @@ public class Personaje : MonoBehaviour
                     {
                         if (hit.collider.gameObject.tag == "ObstaclePolygon")
                         {
-                            Debug.Log("Desactive el poligono");
+                            //Debug.Log("Desactive el poligono");
                             hit.collider.gameObject.GetComponent<Obstaculo>().IsActive = false;
                         }
                     }
@@ -215,7 +223,7 @@ public class Personaje : MonoBehaviour
                   
                         if (hit.collider.gameObject.tag == "ObstacleSquare")
                         {
-                            Debug.Log("Desactive el square");
+                            //Debug.Log("Desactive el square");
                             hit.collider.gameObject.GetComponent<Obstaculo>().IsActive = false;
                         }
                     }
@@ -229,7 +237,7 @@ public class Personaje : MonoBehaviour
                      
                         if (hit.collider.gameObject.tag == "ObstacleTriangle")
                         {
-                            Debug.Log("Desactive el triangle");
+                            //Debug.Log("Desactive el triangle");
                             hit.collider.gameObject.GetComponent<Obstaculo>().IsActive = false;
                         }
                     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Obstaculo : MonoBehaviour
 {
@@ -10,10 +11,20 @@ public class Obstaculo : MonoBehaviour
     [SerializeField]
     private AudioSource source;
 
+    private Color newColor;
 
+    private Renderer obstacleRenderer;
+
+
+    private void Awake()
+    {
+        obstacleRenderer = this.gameObject.GetComponent<Renderer>();   
+    }
     private void Start()
     {
-        source = GameObject.Find("EffectSource").GetComponent<AudioSource>(); 
+        source = GameObject.Find("EffectSource").GetComponent<AudioSource>();
+        newColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        obstacleRenderer.material.color = newColor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
