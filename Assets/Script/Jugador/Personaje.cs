@@ -32,7 +32,9 @@ public class Personaje : MonoBehaviour
 
     public float force;
 
-    public float acceleration = 0.1f;
+    public float acceleration = 1f;
+
+    private float speed =  10f;
 
     [SerializeField]
     private int health = 3;
@@ -90,8 +92,7 @@ public class Personaje : MonoBehaviour
     void Start ()
     {
         rbody = this.gameObject.GetComponent<Rigidbody2D>();
-        var vel = new Vector2(1, rbody.velocity.y);
-        rbody.velocity = (vel.normalized * force);
+        rbody.velocity = transform.right * speed;
         textPoints = GameObject.Find("textPoints").GetComponent<Text>();
         invincibilidadDisponibles = PlayerPrefs.GetInt("TiempoLento");
         tiempoLentoDisponibles = PlayerPrefs.GetInt("Invincibilidad");
@@ -107,6 +108,7 @@ public class Personaje : MonoBehaviour
         if (!isPaused)
         {
             timeHealth -= Time.deltaTime;
+
             Correr();
             ActualizarPuntaje();
             //Debug.Log("Health: " + Health);
@@ -139,18 +141,7 @@ public class Personaje : MonoBehaviour
 
                 LanzarRayo("triangle");
             }
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                force = force / 2;
-                StartCoroutine(apagarTiempoLentoCR());
-                //Debug.LogWarning("Active Tiempo Lento");
-            }
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                isInvincible = true;
-                StartCoroutine(apagarInvincibilidad());
-                //Debug.LogWarning("Active Invincibilidad");
-            }
+
         }
         else if (isPaused)
         {
@@ -158,9 +149,22 @@ public class Personaje : MonoBehaviour
         }
 	}
 
+    public void ActivarInvencibilidad()
+    {
+        isInvincible = true;
+        StartCoroutine(apagarInvincibilidad());
+    }
+
+    public void ActivarTiempoLento()
+    {
+        rbody.velocity = rbody.velocity/2;
+        StartCoroutine(apagarTiempoLentoCR());
+    }
+
     private void Correr()
     {
-        rbody.velocity += new Vector2(acceleration, 0);
+        speed += Time.deltaTime * acceleration;
+        rbody.velocity = transform.right * speed;
         Debug.Log(rbody.velocity);
     }
 

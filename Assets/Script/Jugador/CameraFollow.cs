@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
 
     public void Update()
     {
-        specificVector = new Vector3(transform.position.x, transform.position.y + (Screen.height * 0.01f), cameraObj.transform.position.z);
+        specificVector = new Vector3(transform.position.x+3.5f, transform.position.y + (Screen.height * 0.01f), cameraObj.transform.position.z);
         cameraObj.transform.position = Vector3.Lerp(cameraObj.transform.position, specificVector, smoothSpeed * Time.deltaTime);
     }
 }

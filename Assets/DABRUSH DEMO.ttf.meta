@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6b2ac19a646377e41a5b973b531d0e5d
+timeCreated: 1526930569
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DABRUSH
+  fontNames:
+  - DABRUSH
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d40d3762fcde2524985579d7e2ee70ed, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
